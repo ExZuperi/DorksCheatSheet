@@ -3,6 +3,7 @@ A little firefox plugin-cheatsheet for dorks in most popular search engines
 
 # Installation
 #### Download release zip or download project manualy
+![image](https://github.com/ExZuperi/DorksCheatSheet/assets/54681029/1e615cdb-d443-4225-a3ac-9cd971e7ead5)
 
 #### Goto about:debugging#/runtime/this-firefox
 ![image](https://github.com/ExZuperi/DorksCheatSheet/assets/54681029/e3c8e77d-8e72-4f4d-a825-9a4db9d7e3a5)
