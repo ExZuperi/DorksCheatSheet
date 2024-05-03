@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Engine Extension</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="popup.css">
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <div class="top-panel">
+      <button class="search-button google" id="google-search">Google</button>
+      <button class="search-button yandex" id="yandex-search">Yandex</button>
+      <button class="search-button bing" id="bing-search">Bing</button>
+      <button class="search-button duckduckgo" id="duckduckgo-search">DuckDuckGo</button>
+    </div>
+
+    <div class="search-label">
+      <input type="text" id="search-input" class="search-input" placeholder="Enter search label">
+      <button class="language-button" id="language-toggle">Language</button>
+    </div>
+
+    <div id="dorks-container" class="dorks-container">
+    </div>
+  </body>
+</html>

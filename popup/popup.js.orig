@@ -1,0 +1,144 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const googleButton = document.getElementById("google-search");
+  const yandexButton = document.getElementById("yandex-search");
+  const bingButton = document.getElementById("bing-search");
+  const duckduckgoButton = document.getElementById("duckduckgo-search");
+  const searchInput = document.getElementById('search-input');
+  const languageButton = document.getElementById("language-toggle");
+  let selectedSearchEngine = "google";
+
+  languageButton.addEventListener("click", () => {
+    const currentLanguage = document.documentElement.lang || "en";
+
+    if (currentLanguage === "en") {
+      document.documentElement.lang = "ru";
+      searchInput.placeholder = "Введите текст для поиска";
+      languageButton.textContent = "Язык";
+    } else {
+      document.documentElement.lang = "en";
+      searchInput.placeholder = "Enter search label";
+      languageButton.textContent = "Language";
+    }
+
+    displayDorks(selectedSearchEngine);
+    filterDorks(searchInput); // Применяем фильтр после изменения языка
+  });
+
+  googleButton.addEventListener("click", () => {
+    selectedSearchEngine = "google";
+    displayDorks(selectedSearchEngine);
+    filterDorks(searchInput); // Применяем фильтр после выбора поискового движка
+  });
+
+  yandexButton.addEventListener("click", () => {
+    selectedSearchEngine = "yandex";
+    displayDorks(selectedSearchEngine);
+    filterDorks(searchInput);
+  });
+
+  bingButton.addEventListener("click", () => {
+    selectedSearchEngine = "bing";
+    displayDorks(selectedSearchEngine);
+    filterDorks(searchInput);
+  });
+
+  duckduckgoButton.addEventListener("click", () => {
+    selectedSearchEngine = "duckduckgo";
+    displayDorks(selectedSearchEngine);
+    filterDorks(searchInput);
+  });
+
+  searchInput.addEventListener('input', () => filterDorks(searchInput));
+});
+
+function displayDorks(searchEngine) {
+  const dorksContainer = document.getElementById("dorks-container");
+  dorksContainer.innerHTML = "";
+
+  const currentLanguage = document.documentElement.lang || "en";
+
+  const dorksTable = document.createElement("table");
+  dorksTable.className = "dorks-table";
+
+  const dorksTableHeader = document.createElement("tr");
+  if (currentLanguage === "en") {
+    dorksTableHeader.innerHTML = "<th>Dork</th><th>Description</th>";
+  } else {
+    dorksTableHeader.innerHTML = "<th>Dork</th><th>Описание</th>";
+  }
+  dorksTable.appendChild(dorksTableHeader);
+
+  let dorks = [];
+  if (searchEngine === "google") {
+    if (currentLanguage === "en") {
+      dorks = [
+        ["allintext:keyword1 keyword2", "Search for occurrences of all the keywords given"],
+        ["intext:keyword1 keyword2", "Search for the occurrences of keywords all at once or one at a time"],
+        ["inurl:keyword", "Search for a URL matching one of the keywords"],
+        ["allinurl:keyword1 keyword2", "Search for a URL matching all the keywords in the query"],
+        ["intitle:keyword1 keyword2", "Search for occurrences of keywords in title all or one"],
+        ["allintitle:keyword1 keyword2", "Search for occurrences of keywords all at a time"],
+        ["site:example.com", "Specifically searches that particular site and lists all the results for that site"],
+        ["filetype:pdf", "Searches for a particular filetype mentioned in the query"],
+        ["link:example.com", "Searches for external links to pages"],
+        ["numrange:1-100", "Used to locate specific numbers in your searches"],
+        ["before:2023-01-01 after:2022-01-01", "Used to search within a particular date range"],
+        ["allinanchor:keyword", "Shows sites which have the key terms in links pointing to them"],
+        ["allinpostauthor:authorname", "Exclusive to blog search, picks out blog posts written by specific individuals"],
+        ["related:example.com", "List web pages that are similar to a specified web page"],
+        ["cache:example.com", "Shows the version of the web page that Google has in its cache"]
+      ];
+    } else {
+      dorks = [
+        ["allintext:keyword1 keyword2", "Поиск вхождений всех указанных ключевых слов"],
+        ["intext:keyword1 keyword2", "Поиск вхождений ключевых слов все сразу или по одному"],
+        ["inurl:keyword", "Поиск URL, соответствующего одному из ключевых слов"],
+        ["allinurl:keyword1 keyword2", "Поиск URL, соответствующего всем ключевым словам в запросе"],
+        ["intitle:keyword1 keyword2", "Поиск вхождений ключевых слов в заголовке, все или по одному"],
+        ["allintitle:keyword1 keyword2", "Поиск вхождений ключевых слов в заголовке все сразу"],
+        ["site:example.com", "Поиск на конкретном сайте и вывод всех результатов для этого сайта"],
+        ["filetype:pdf", "Поиск файлов определенного типа, указанного в запросе"],
+        ["link:example.com", "Поиск внешних ссылок на страницы"],
+        ["numrange:1-100", "Используется для поиска конкретных чисел в ваших запросах"],
+        ["before:2023-01-01 after:2022-01-01", "Используется для поиска в определенном диапазоне дат"],
+        ["allinanchor:keyword", "Показывает сайты, которые имеют ключевые термины в ссылках, указывающих на них"],
+        ["allinpostauthor:authorname", "Эксклюзивно для поиска в блогах, выбирает сообщения, написанные определенными авторами"],
+        ["related:example.com", "Список веб-страниц, похожих на указанную веб-страницу"],
+        ["cache:example.com", "Показывает версию веб-страницы, которая есть в кэше Google"]
+      ];
+    }
+  } else if (searchEngine === "yandex") {
+    // Implement Yandex dorks in both languages
+  } else if (searchEngine === "bing") {
+    // Implement Bing dorks in both languages
+  } else if (searchEngine === "duckduckgo") {
+    // Implement DuckDuckGo dorks in both languages
+  }
+
+  dorks.forEach(function(dork) {
+    const dorksTableRow = document.createElement("tr");
+    dorksTableRow.innerHTML = `<td>${dork[0]}</td><td>${dork[1]}</td>`;
+    dorksTable.appendChild(dorksTableRow);
+  });
+
+  dorksContainer.appendChild(dorksTable);
+}
+
+function filterDorks(searchInput) {
+  const searchTerm = searchInput.value.trim().toLowerCase();
+  const dorksTable = document.querySelector('.dorks-table');
+  if (dorksTable) {
+    const dorksRows = dorksTable.getElementsByTagName('tr');
+    for (let i = 1; i < dorksRows.length; i++) {
+      const dorksRow = dorksRows[i];
+      const dorkText = dorksRow.querySelector('td:first-child').innerText.toLowerCase();
+      const descriptionText = dorksRow.querySelector('td:last-child').innerText.toLowerCase();
+
+      if (dorkText.includes(searchTerm) || descriptionText.includes(searchTerm)) {
+        dorksRow.style.display = 'table-row';
+      } else {
+        dorksRow.style.display = 'none';
+      }
+    }
+  }
+}

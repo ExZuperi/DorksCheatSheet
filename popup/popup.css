@@ -1,0 +1,116 @@
+body {
+  width: 535px;
+  height: 300px;
+  font-family: Arial, sans-serif;
+  background-color: #333;
+  color: #fff;
+  padding-top: 5px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-panel {
+  margin-bottom: 10px;
+}
+
+.search-button {
+  display: inline-block;
+  width: 120px;
+  padding: 8px;
+  margin: 0 5px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search-button.google {
+  background-color: #4285F4;
+}
+
+.search-button.yandex {
+  background-color: #FF431B;
+}
+
+.search-button.bing {
+  background-color: #00809D;
+}
+
+.search-button.duckduckgo {
+  background-color: #FFA500;
+}
+
+.search-button.duckduckgo:hover {
+  background-color: #DF5D39;
+}
+
+.dorks-container {
+  background-color: #444;
+  border-radius: 4px;
+  width: 523px;
+  max-width: 523px;
+  overflow: auto;
+  height: 65vh;
+  margin-left: 5px;
+}
+
+.dorks-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dorks-table th {
+  background-color: #555;
+  color: #fff;
+  padding: 10px;
+  border: 1px solid #333;
+}
+
+.dorks-table td {
+  padding: 10px;
+  border: 1px solid #333;
+}
+
+.search-input {
+  width: 70%;
+  padding: 8px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #777;
+  border-radius: 10px;
+  color: #333;
+  background-color: #fff;
+}
+
+.search-button.search {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.search-button.search:hover {
+  background-color: #45a049;
+}
+
+.language-button {
+  display: inline-block;
+  width: 120px;
+  padding: 8px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 6px;
+}
+
+.language-button:hover {
+  background-color: #777;
+}
